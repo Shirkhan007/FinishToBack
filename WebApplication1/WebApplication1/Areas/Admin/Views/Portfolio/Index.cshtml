@@ -1,0 +1,32 @@
+﻿@using WebApplication1.Models
+@model List<Portfolio>
+<table class="table">
+    <h3>Elave et
+        <a class="btn btn-primary" asp-action="Create">Yarat</a>
+    </h3>
+    <thead>
+        <tr>
+            <th >Id</th>
+            <th >Name</th>
+            <th >Description</th>
+            <th >ImageUrl</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           <tr>
+            <th>@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+                <td>
+                    <img width=100px; height=100px; src="~/upload/portfolio/@item.ImageUrl" />
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Update" asp-controller="Portfolio" asp-route-id="@item.Id">Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Portfolio" asp-route-id="@item.Id">Delete</a>
+                </td>
+        </tr>  
+        }     
+    </tbody>
+</table>
